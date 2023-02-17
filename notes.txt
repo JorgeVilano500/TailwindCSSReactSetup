@@ -1,0 +1,45 @@
+1. create vite app 
+2. install packages 
+- npm install tailwindcss @snowpack/plugin-postcss postcss --dev
+
+ (From docs
+  npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+)
+3. then configure in the file
+
+in postcss.config.js
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+}
+
+In tailwind.config.css
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+// would use a snowpack.config.mjs file but we are using vite. it doesnt need those
+
+4. then in index.css 
+add these
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+can add darkmode by adding 
+1. in tailwind.config.css file add darkMode: 'class' as an object key
+2. then add dark at the top of the class 
+3. whatever you want in dark mode you can put dark:elment after
